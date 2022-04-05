@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app.kubernetes.io/name: catalogcatalog
+    app.kubernetes.io/name: catalog
     app.kubernetes.io/instance: {{ .Release.Name }}
