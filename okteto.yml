@@ -1,7 +1,12 @@
-name: api
-command: bash
-sync:
-  - .:/src
-forward:
-  - 9229:9229
-  - 27017:mongodb:27017
+icon: https://apps.okteto.com/movies/icon.png
+build:
+  catalog:
+    context: .
+deploy:
+  - okteto deploy -f mongodb-compose.yml
+  - helm upgrade --install catalog chart --set image=${OKTETO_BUILD_CATALOG_IMAGE}
+dev:
+  catalog:
+    command: yarn start
+    sync:
+      - .:/src

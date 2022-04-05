@@ -34,13 +34,9 @@ function loadWithRetry() {
     var promises = [];
     db = client.db(process.env.MONGODB_DATABASE);
     promises.push(new Promise((resolve, reject)=>{
-      insert(db.collection('movies'), "./data/movies.json", resolve, reject);
+      insert(db.collection('catalog'), "./data/catalog.json", resolve, reject);
     }));
-  
-    promises.push(new Promise((resolve, reject)=>{
-      insert(db.collection('watching'), "./data/watching.json", resolve, reject);
-    }));
-  
+
     Promise.all(promises)
     .then(function() { 
       console.log('all loaded'); 
