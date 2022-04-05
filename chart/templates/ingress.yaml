@@ -16,3 +16,6 @@ spec:
                 name: catalog
                 port:
                   number: 8080
+  tls:
+  - hosts:
+    - movies-{{ .Release.Namespace }}.demo.okteto.dev
