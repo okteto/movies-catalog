@@ -4,10 +4,11 @@ metadata:
   name: catalog
   labels:
     {{- include "movies.labels" . | nindent 4 }}
-spec:
+  annotations:
+    dev.okteto.com/generate-host: "movies"
+  spec:
   rules:
-    - host: movies-{{ .Release.Namespace }}.demo.okteto.dev
-      http:
+    - http:
         paths:
           - path: /catalog
             pathType: Prefix
@@ -16,6 +17,3 @@ spec:
                 name: catalog
                 port:
                   number: 8080
-  tls:
-  - hosts:
-    - movies-{{ .Release.Namespace }}.demo.okteto.dev
