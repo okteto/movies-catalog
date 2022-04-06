@@ -6,7 +6,7 @@ metadata:
     {{- include "movies.labels" . | nindent 4 }}
   annotations:
     dev.okteto.com/generate-host: "movies"
-  spec:
+spec:
   rules:
     - http:
         paths:
