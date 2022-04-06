@@ -1,10 +1,17 @@
 icon: https://apps.okteto.com/movies/icon.png
+
+dependencies:
+  - https://github.com/okteto/movies-frontend-with-divert
+  - https://github.com/okteto/movies-rentals
+
 build:
   catalog:
     context: .
+
 deploy:
   - okteto deploy -f mongodb-compose.yml
   - helm upgrade --install catalog chart --set image=${OKTETO_BUILD_CATALOG_IMAGE}
+
 dev:
   catalog:
     command: yarn start
