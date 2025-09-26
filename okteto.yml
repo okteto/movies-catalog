@@ -9,8 +9,9 @@ build:
     context: .
 
 deploy:
-  - okteto deploy -f mongodb-compose.yml
-  - helm upgrade --install catalog chart --set image=${OKTETO_BUILD_CATALOG_IMAGE}
+  compose: mongodb-compose.yml
+  commands:
+    - helm upgrade --install catalog chart --set image=${OKTETO_BUILD_CATALOG_IMAGE}
 
 dev:
   catalog:
